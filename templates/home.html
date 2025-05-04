@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiaCheck</title>
+    <link href="{{url_for('static', filename='css/output.css')}}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='images/logoApp.png') }}">
+</head>
+<body class= "bg-[#FFF5D2] font-[poppins]">
+    <main class="space-y-12 px-6 md:py-4  lg:px-16">
+        <section class="min-h-screen ">
+            <!-- logo -->
+            <div data-aos="fade-down" class="flex mt-4 space-x-2 items-center justify-between md:justify-start">
+                <!-- <img src="" alt=""> -->
+                <img src="static\images\logoApp.png" alt="appLogo">
+                <p class="font-bold text-2xl md:text-4xl text-[#7A0A28]">DiaCheck</p>
+            </div>
+            <div data-aos="zoom-out" class="flex flex-col text-center md:text-start lg:flex-row items-center 3xl:mt-14 mt-8 justify-between space-y-6">
+                <div class="space-y-6">
+                    <h1 class="font-bold text-4xl md:text-8xl text-[#7A0A28]">
+                        Diabetes, <br />
+                        <span class="text-black">Screening</span>
+                    </h1>
+                    <p class="text-neutral-100 text-lg md:text-3xl">Find out your risk of diabetes in just a few minutes! Answer simple questions and get instant results.</p>
+                    <a href="{{url_for('predictForm')}}" class="text-md md:text-xl border p-3 rounded-xl border-[#7A0A28] text-[#7A0A28] hover:bg-[#7A0A28] hover:text-[#FFF5D2]">Get Started</a>
+                </div>
+                <img class="w-[80%] lg:w-[40%]" src="static\images\homepict.svg" alt="home_pict">
+            </div>
+        </section>
+
+        <section class="md:mt-16 text-center md:text-start">
+            <h4 data-aos="fade-right" class="font-bold text-primary text-2xl md:text-4xl mb-8">FEATURES WE PROVIDE</h4>
+            <div class="flex flex-col md:flex-row items-center space-x-8">
+                <div class="space-y-8">
+                    <h2 data-aos="fade-right" class="font-bold text-3xl xl:text-7xl place-items-center md:place-items-start">Simple Health
+                        <span class="flex gap-4">
+                            Questionnaire
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 md:w-20 md:h-20" width="61" height="61" fill="none" viewBox="0 0 61 61">
+                                <g clip-path="url(#a)">
+                                    <path fill="#7A0A28" d="M31.262 57.442H30.5c-.509 0-.763-.254-1.271-.763L12.962 39.904c-1.017-1.016-1.017-2.541 0-3.558s2.542-1.017 3.558 0l14.488 14.996 19.57-20.08c1.526-1.524 2.542-3.303 3.05-5.083 1.526-4.829.255-9.658-3.05-13.216-1.524-1.78-3.812-2.796-6.353-2.796-3.559 0-7.625 2.033-11.184 5.591-.508.509-1.016.763-1.779.763-.762 0-1.27-.254-1.779-.763-3.558-3.558-7.625-5.591-11.438-5.591-2.541 0-4.575 1.017-6.608 2.796-3.05 3.05-4.32 7.625-3.304 12.2.508 1.525-.508 2.796-1.78 3.05-1.27.254-2.795-.509-3.05-1.78-1.524-6.1.255-12.454 4.83-17.029 2.796-2.795 6.1-4.32 9.913-4.32 4.32 0 8.895 2.033 12.962 5.591 4.32-3.558 8.896-5.592 13.217-5.592 3.812 0 7.37 1.526 10.166 4.321 4.83 4.83 6.355 11.692 4.321 18.3-.762 2.542-2.287 5.084-4.32 7.117l-21.35 21.858c-.509.509-1.017.763-1.78.763Z"/>
+                                    <path fill="#7A0A28" d="M30.754 42.192c-1.27 0-2.033-.763-2.542-1.78l-3.05-9.912-.762 2.542c-.254 1.017-1.271 1.78-2.542 1.78H5.083c-1.525 0-2.542-1.018-2.542-2.543 0-1.525 1.017-2.541 2.542-2.541H20.08l2.287-8.642c.509-1.017 1.526-1.78 2.542-1.78 1.017 0 2.034.763 2.542 1.78l3.558 11.183 3.304-8.387c.509-1.017 1.271-1.525 2.288-1.525s2.033.762 2.287 1.525l2.288 5.846h3.558c1.525 0 2.542 1.016 2.542 2.541s-1.017 2.542-2.542 2.542h-5.337c-1.017 0-2.034-.762-2.288-1.525l-.508-1.525-3.559 8.896c-.254 1.017-1.27 1.525-2.287 1.525Z"/>
+                                </g>
+                                <defs>
+                                    <clipPath id="a">
+                                    <path fill="#fff" d="M2.542 5.083H59.73v52.358H2.542z"/>
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                        </span>
+                    </h2>
+                    <p data-aos="fade-right" class="text-neutral-100 text-xl md:text-3xl">We calculate your diabetes risk based on your answers.</p>
+                </div>
+                <div data-aos="fade-down" class="md:ml-16 mt-6 md:mt-0flex flex-col items-start place-items-center md:place-items-start space-y-4">
+                    <img src="static\images\foodanim.svg" alt="">
+                    <h3 class="text-xl md:text-3xl">Food Recomendation</h3>
+                    <p class="text-neutral-100 text-xl md:text-3xl">We provide healthy food recommendations to help prevent diabetes.</p>
+                </div>
+            </div>
+        </section>
+        <section class="mt-[200px] text-center md:text-start">
+            <h4 data-aos="fade-right" class="font-bold text-primary text-2xl md:text-4xl">HELP TOPICS</h4>
+            <h2 data-aos="fade-right" class="font-bold text-3xl xl:text-7xl">Enhance Your Lifestyle</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 justify-between mt-8  place-items-center md:place-items-start text-center md:text-start">
+                <div data-aos="zoom-in">
+                    <img src="static\images\peanuthome.png" alt="peanut.png" class="w-[80%] mx-auto md:mx-0 md:w-fit">
+                    <h3 class="font-bold text-xl md:text-3xl">Healthy Fats</h3>
+                    <p class="text-neutral-100 text-xl md:text-3xl">Supports heart health.</p>
+                </div>
+                <div data-aos="zoom-in">
+                    <img src="static\images\veggiehome.png" alt="veggie.png" class="w-[80%] mx-auto md:mx-0 md:w-fit">
+                    <h3 class="font-bold text-xl md:text-3xl">High-Fiber Foods</h3>
+                    <p class="text-neutral-100 text-xl md:text-3xl">Helps control glucose levels.</p>
+                </div>
+                <div data-aos="zoom-in">
+                    <img src="static\images\flourhome.png" alt="flour.png" class="w-[80%] mx-auto md:mx-0 md:w-fit">
+                    <h3 class="font-bold text-xl md:text-3xl">Lean Protein</h3>
+                    <p class="text-neutral-100 text-xl md:text-3xl">Stabilizes energy levels.</p>
+                </div>
+                <div data-aos="zoom-in">
+                    <img src="static\images\gingerhome.png" alt="ginger.png" class="w-[80%] mx-auto md:mx-0 md:w-fit">
+                    <h3 class="font-bold text-xl md:text-3xl">Anti-Inflammatory</h3>
+                    <p class="text-neutral-100 text-xl md:text-3xl">Reduces inflammation.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer data-aos="fade-up" zdata-aos-anchor-placement="top-bottom" class="bg-[#DBCB99] rounded-t-xl w-full px-6 md:py-4  lg:px-16  space-y-8 mt-32">
+        <div class="flex flex-col md:flex-row justify-between md:text-start text-center items-center w-full pt-8">
+            <div>
+                <img src="static\images\logoApp.png" alt="appLogo">
+                <h4 class="font-bold text-2xl md:text-4xl text-primary">DiaCheck</h4>
+            </div>
+            <div class="flex md:items-start items-center flex-col space-y-4">
+                <p class="font-bold text-md md:text-xl">Contact Us</p>
+                <div class="flex space-x-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="none" viewBox="0 0 25 25">
+                        <path stroke="#7A0A28" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.679" d="M22.181 7.874v9.997a2.5 2.5 0 0 1-2.499 2.499H4.687a2.5 2.5 0 0 1-2.5-2.5V7.874"/>
+                        <path stroke="#7A0A28" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.679" d="M22.181 7.873a2.5 2.5 0 0 0-2.499-2.499H4.687a2.5 2.5 0 0 0-2.5 2.5l8.673 5.414a2.5 2.5 0 0 0 2.649 0l8.672-5.415Z"/>
+                    </svg>
+                    <p class="text-neutral-100 text-md md:text-xl">womencrumbs@gmail.com</p>
+                </div>
+                <div class="flex space-x-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="none" viewBox="0 0 23 23">
+                        <path stroke="#7A0A28" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.679" d="m13.886 20.976.01.008a4.917 4.917 0 0 0 6.12-.672l.687-.688a1.638 1.638 0 0 0 0-2.318l-2.899-2.897a1.64 1.64 0 0 0-2.319 0 1.639 1.639 0 0 1-2.317 0L8.532 9.772a1.64 1.64 0 0 1 0-2.317 1.64 1.64 0 0 0 0-2.319L5.634 2.239a1.64 1.64 0 0 0-2.317 0l-.689.688a4.917 4.917 0 0 0-.67 6.119l.006.01a44.37 44.37 0 0 0 11.921 11.92v0Z"/>
+                    </svg>
+                    <p class="text-neutral-100 text-md md:text-xl">(414) 687 - 5892</p>
+                </div>
+                <div class="flex space-x-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="23" fill="none" viewBox="0 0 19 23">
+                        <path stroke="#7A0A28" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.679" d="M17.415 10.082c0 6.452-6.609 10.428-7.982 11.185a.515.515 0 0 1-.497 0C7.562 20.51.955 16.534.955 10.082c0-5.144 3.086-8.745 8.23-8.745s8.23 3.6 8.23 8.745Z"/>
+                        <path stroke="#7A0A28" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.679" d="M5.07 9.568a4.115 4.115 0 1 0 8.23 0 4.115 4.115 0 0 0-8.23 0v0Z"/>
+                    </svg>  
+                    <p class="text-neutral-100 text-md md:text-xl">Denpasar, Bali, 80117</p>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="flex flex-col md:flex-row text-center md:text-start justify-between item-center mb-4 w-full">
+            <p class="text-neutral-100 text-md md:text-xl">
+                Copyright © 2025
+            </p>
+            <p class="text-neutral-100 text-md md:text-xl text-wrap">
+                All Rights Reserved | Terms and Conditions | Privacy Policy
+            </p>
+        </div>
+    </footer>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+</html>

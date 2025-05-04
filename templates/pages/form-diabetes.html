@@ -1,0 +1,231 @@
+{% extends 'layouts/app.html' %}
+{% block title %}DiaCheck | Form{% endblock %}
+{% block content %}
+
+<div data-aos="fade-right" class="flex flex-col items-center p-6 bg-[#FFFCED]/50 rounded-xl shadow-[0_1px_10px_rgba(0,0,0,0.15)] min-h-[80%] md:min-h-[80%] mt-8  relative">
+    <h2 class="text-2xl md:text-3xl font-bold justify-center mt-4 text-center">Please fill in the true information!</h2>
+    <p class="text-primary" id="step-now">Step 1 of 3</p>
+    <form action="{{ url_for('predictScore') }}" method="post" class="w-full lg:w-[80%] mt-8">
+        <!-- STEP 1 -->
+        <div data-aos="fade-right" class="step" id="step-1">
+            <div class="space-y-8 lg:px-6 2xl:px-45 3xl:px-40">
+                <label class="text-primary flex justify-between items-center space-x-5">
+                    <span class="font-bold text-xl">
+                        AGE:
+                    </span>
+                    <input type="number" step="1" name="age" class="p-3 text-xl pl-4 rounded-xl w-[100%] bg-white shadow-[0_5px_3px_rgba(0,0,0,0.08)] focus:outline-primary placeholder:text-gray-300 placeholder:italic" placeholder="Input your age" required>
+                </label>
+            
+                <div class="flex flex-col lg:flex-row justify-between lg:justify-between">
+                    <div class="text-primary mb-2 font-bold mr-4 lg:mr-8 text-xl">SEX</div>
+                    <!-- Male -->
+                    
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 lg:gap-8 place-items-start">
+
+                        <label class="cursor-pointer  rounded-xl p-3 w-fit h-fit md:w-52 md:h-52 lg:w-60 lg:h-60 3xl:w-80 3xl:h-80 flex flex-col items-center justify-center bg-white shadow-lg has-checked:bg-primary has-checked:text-white">
+                            <input id="male" type="radio" name="gender" value="Male" class="hidden" required />
+                            <img src="{{ url_for('static', filename='images/male.png') }}" alt="Male" />
+                            <p class="font-bold text-xl">MALE</p>
+                        </label>
+                        <!-- Female -->
+                        <label class="cursor-pointer rounded-xl p-3 w-fit h-fit md:w-52 md:h-52 lg:w-60 lg:h-60 3xl:w-80 3xl:h-80 flex flex-col items-center justify-center bg-white shadow-lg has-checked:bg-primary has-checked:text-white">
+                            <input id="female" type="radio" name="gender" value="Female" class="hidden" required />
+                            <img src="{{ url_for('static', filename='images/female.png') }}" alt="Female" />
+                            <p class="font-bold text-xl">FEMALE</p>
+                        </label>
+                        <!-- Other -->
+                        <label class="cursor-pointer rounded-xl p-3 w-fit h-fit md:w-52 md:h-52 lg:w-60 lg:h-60 3xl:w-80 3xl:h-80 flex flex-col items-center justify-center bg-white shadow-lg has-checked:bg-primary has-checked:text-white">
+                            <input id="other" type="radio" name="gender" value="Other" class="hidden" required />
+                            <img src="{{ url_for('static', filename='images/othergender.png') }}" alt="othergender" />
+                            <p class="font-bold text-xl">OTHER</p>
+                        </label>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="hidden step space-y-8 px-4 mt-4" id="step-2">
+            <label class="flex flex-col md:flex-row space-y-4  justify-between items-center text-center">
+                <div class="flex items-center space-x-4 font-bold text-primary">
+                    <img src="static\images\hypertension.svg" alt="hypertension">
+                    <p class="text-xl">HYPERTENSION</p>
+                </div>
+                <select name="hypertension" class="md:w-[60%] w-fit uppercase p-3 pl-4 pr-4 rounded-xl bg-white shadow-[0_5px_3px_rgba(0,0,0,0.08)] font-bold apperance-none text-center text-md md:text-xl">
+                    <option value="" disabled selected hidden>Select hypertension status</option>
+                    <option class="uppercase" value="0">No</option>
+                    <option class="uppercase" value="1">Yes</option>
+                </select>
+            </label>
+            <label class="flex flex-col md:flex-row space-y-4  justify-between items-center text-center">
+                <div class="flex items-center space-x-4 font-bold text-primary">
+                    <img src="static\images\heartdisease.svg" alt="heartdisease">
+                    <p class="text-xl">HEART DISEASE</p>
+                </div>
+                <select name="heart_disease" class="md:w-[60%] uppercase p-3 pl-4 pr-4 rounded-xl bg-white shadow-[0_5px_3px_rgba(0,0,0,0.08)] font-bold apperance-none text-center text-md md:text-xl">
+                    <option value="" disabled selected hidden>Select heart disease status</option>
+                    <option class="uppercase" value="0">No</option>
+                    <option class="uppercase" value="1">Yes</option>
+                </select>
+            </label>
+            <label class="flex flex-col md:flex-row space-y-4  justify-between items-center text-center">
+                <div class="flex items-center space-x-4 font-bold text-primary">
+                    <img src="static\images\smokinghistory.svg" alt="smokinghistory">
+                    <p class="text-xl">SMOKING HISTORY</p>
+                </div>
+                <select name="smoking_history" class="md:w-[60%] uppercase p-3 pl-4 pr-4 rounded-xl bg-white shadow-[0_5px_3px_rgba(0,0,0,0.08)] font-bold apperance-none text-center text-md md:text-xl">
+                    <option value="" disabled selected hidden>Select hypertension status</option>
+                    <option class="uppercase" value="No Info">No Info</option>
+                    <option class="uppercase" value="never">Never</option>
+                    <option class="uppercase" value="former">Former</option>
+                    <option class="uppercase" value="ever">Ever</option>
+                    <option class="uppercase" value="current">Current</option>
+                    <option class="uppercase" value="not current">Not Current</option>
+                </select>
+            </label>
+        </div>
+        <div class="step space-y-6 mt-4 hidden px-4 mb-16 md:mb-0"  id="step-3">
+            <label class="flex flex-col text-primary space-y-2">
+                <span class="font-bold text-xl">
+                    BMI:
+                </span>
+                <input type="number" step="0.01" name="bmi" class="p-3 pl-4 text-xl w-full rounded-xl bg-white shadow-[0_5px_3px_rgba(0,0,0,0.08)] focus:outline-primary placeholder:text-gray-300 placeholder:italic" placeholder="Input your BMI" required>
+            </label>
+            <label class="flex flex-col text-primary space-y-2">
+                <span class="font-bold text-xl">
+                    HbA1c Level:
+                </span>
+                <input type="number" step="0.01" name="hba1c_level" class="p-3 pl-4 text-xl w-full rounded-xl bg-white shadow-[0_5px_3px_rgba(0,0,0,0.08)] focus:outline-primary placeholder:text-gray-300 placeholder:italic " placeholder="Input your HbA1c Level" required>
+            </label>
+            <label class="flex flex-col text-primary space-y-2">
+                <span class="font-bold text-xl">
+                    Blood Glucose Level:
+                </span>
+                <input type="number" step="0.01" name="blood_glucose_level" class="p-3 pl-4 text-xl w-full rounded-xl bg-white shadow-[0_5px_3px_rgba(0,0,0,0.08)] focus:outline-primary placeholder:text-gray-300 placeholder:italic" placeholder="Input your Blood Glucose Level" required>
+            </label>
+        </div>
+        <!-- Buttons -->
+        <div class="absolute bottom-0 inset-x-0 p-6 px-8">
+            <div class="flex justify-between mt-4">
+                <button type="button" id="prevBtn" class="text-primary hover:underline flex items-center space-x-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+                    </svg>
+                    <p>Back</p>
+                </button>
+                <button type="button" id="nextBtn" class="rounded-xl bg-primary text-white p-2 px-4 hover:bg-[#57052B] flex items-center space-x-2">
+                    <p>Next</p>          
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                    </svg>
+                </button>
+                <button type="submit" id="submitBtnContainer" class="rounded-xl bg-[#40BF24] text-white p-2 px-4 hover:bg-[#0B6E10] flex items-center space-x-2 disabled:bg-gray-400" disabled>
+                    <p>Check Now!</p>          
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Submit only on last step -->
+        <!-- <div class="mt-4 hidden" id="submitBtnContainer">
+            <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded ">Check Now!</button>
+        </div> -->
+    </form>
+</div>
+
+<script>
+    const steps = document.querySelectorAll(".step");
+    const nextBtn = document.getElementById("nextBtn");
+    const prevBtn = document.getElementById("prevBtn");
+    const submitBtn = document.getElementById("submitBtnContainer");
+    const stepNow = document.getElementById("step-now");
+
+    let currentStep = 0;
+
+    // Tampilkan step berdasarkan indeks
+    function showStep(index) {
+        steps.forEach((step, i) => {
+            step.classList.toggle("hidden", i !== index);
+        });
+
+        if (index === 0) {
+            prevBtn.classList.add("invisible");
+        } else {
+            prevBtn.classList.remove("invisible");
+        }
+        nextBtn.classList.toggle("hidden", index === steps.length - 1);
+        submitBtn.classList.toggle("hidden", index !== steps.length - 1);
+
+        // Update teks step
+        stepNow.textContent = `Step ${index + 1} of ${steps.length}`;
+    }
+
+    // Validasi input di step saat ini
+    function validateStep(index) {
+        const currentInputs = steps[index].querySelectorAll("input, select");
+        for (const input of currentInputs) {
+            if (input.type === "radio" ) {
+                // Kalau radio, minimal satu yang sama name-nya harus dicek
+                const name = input.name;
+                const radios = steps[index].querySelectorAll(`input[name="${name}"]`);
+                if (![...radios].some(r => r.checked)) return false;
+            } else if (!input.value) {
+                return false;
+            }
+        } 
+        return true;
+    }
+
+    // Next button
+    nextBtn.addEventListener("click", () => {
+        if (!validateStep(currentStep)) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Oops!',
+                text: 'Please complete all required fields before continuing.',
+                confirmButtonColor: '#7A0A28',
+                background: '#FFFCED',
+                position: 'center',
+                customClass: {
+                    popup: ' shadow-lg swal2-border-radius',
+                    container: 'swal2-no-padding'
+                }
+            });
+            document.body.classList.remove('swal2-height-auto');
+            return;
+        }
+
+        if (currentStep < steps.length - 1) {
+            currentStep++;
+            showStep(currentStep);
+        }
+    });
+
+    // Previous button
+    prevBtn.addEventListener("click", () => {
+        if (currentStep > 0) {
+            currentStep--;
+            showStep(currentStep);
+        }
+    });
+
+    function validateFinalStep() {
+        const finalStepInputs = document.querySelectorAll("#step-3 input");
+        const isComplete = [...finalStepInputs].every(input => input.value.trim() !== "");
+        submitBtn.disabled = !isComplete;
+    }
+
+    // Tambahkan event listener untuk setiap input pada step-3
+    document.querySelectorAll("#step-3 input").forEach(input => {
+        input.addEventListener("input", validateFinalStep);
+    });
+
+    // Panggil fungsi untuk mengecek status awal saat halaman dimuat
+    validateFinalStep();
+
+    // Inisialisasi pertama kali
+    showStep(currentStep);
+</script>
+
+
+{% endblock %}

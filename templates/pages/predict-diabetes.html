@@ -1,0 +1,45 @@
+{% extends 'layouts/app.html' %}
+{% block title %}DiaCheck | Score{% endblock %}
+
+{% block content %}
+<div class="flex flex-col items-center space-y-8 mt-10 3xl:mt-20">
+    <div data-aos="zoom-in" class="bg-[#FFFCED]/50 shadow-[0_1px_10px_rgba(0,0,0,0.15)] rounded-xl flex flex-col items-center justify-center space-y-6 py-6 px-4 2xl:w-[40%] md:w-[60%] w-[95%] text-center">
+
+        <h2 class="font-semibold mb-4 text-xl md:text-2xl">Your test result</h2>
+        <p class="text-2xl md:text-4xl font-bold uppercase text-primary">{{ result }}</p>
+        
+        <p class="text-gray-400">confidence score:</p>
+        <div class="relative size-40 md:size-55 3xl:size-60">
+            <svg class="size-full -rotate-90" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+                <!-- Background Circle -->
+                <circle cx="18" cy="18" r="16" fill="none" class="stroke-current text-[#E4CED4]" stroke-width="4"></circle>
+                
+                <!-- Progress Circle -->
+                <circle 
+                    cx="18" cy="18" r="16" 
+                    fill="none" 
+                    class="stroke-current text-primary" 
+                    stroke-width="4" 
+                    stroke-dasharray="100" 
+                    stroke-dashoffset="{{ 100 - score }}" 
+                    stroke-linecap="round">
+                </circle>
+            </svg>
+        
+            <!-- Percentage Text -->
+            <div class="absolute top-1/2 start-1/2 transform -translate-y-1/2 -translate-x-1/2">
+                <span class="text-center text-2xl md:text-4xl font-bold text-primary"> {{ "%.2f"|format(score) }}%
+                </span>
+            </div>
+        </div>
+
+        <p class="text-gray-400">
+            This score reflects how confident the model is in predicting your diabetes risk based on your questionnaire responses. If diabetes is detected, it is strongly recommended to consult a doctor for further evaluation.
+        </p>
+    </div>
+
+    <a data-aos="fade-down" href="{{ url_for('predictForm') }}" class="p-3 px-4 mb-8 md:mb-0 hover:bg-[#57052B] bg-primary text-white font-semibold rounded-4xl">
+        Check Again
+    </a>
+</div>
+{% endblock %}
